@@ -1,1 +1,338 @@
-<h1>Hello World!</h1>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Freiwillige Feuerwehr Katensen</title>
+
+  <style>
+    :root{
+      --red:#b30000;
+      --dark:#333;
+      --light:#f6f7f9;
+      --accent:#ffcc00;
+      --shadow:0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:var(--light);
+      color:#222;
+    }
+
+    /* NAV */
+    .nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      background:rgba(20,20,20,0.92);
+      backdrop-filter:blur(10px);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0.8rem 2rem;
+      z-index:1000;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:0.8rem;
+      color:white;
+      font-weight:700;
+    }
+
+    .logo{
+      width:36px;
+      height:36px;
+      border-radius:6px;
+      background:var(--red);
+    }
+
+    .nav a{
+      color:white;
+      margin-left:1rem;
+      text-decoration:none;
+      opacity:0.85;
+      font-weight:500;
+    }
+
+    .nav a:hover{
+      color:var(--accent);
+      opacity:1;
+    }
+
+    /* HERO */
+    header{
+      height:92vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url('img/hero.jpg') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:white;
+      padding:2rem;
+      flex-direction:column;
+    }
+
+    header img.wappen{
+      width:120px;
+      margin-bottom:1rem;
+      filter:drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+    }
+
+    header h1{
+      font-size:3rem;
+      max-width:900px;
+    }
+
+    header p{
+      margin-top:1rem;
+      opacity:0.9;
+      font-size:1.2rem;
+    }
+
+    .cta{
+      margin-top:2rem;
+      padding:0.9rem 1.6rem;
+      background:var(--red);
+      color:white;
+      text-decoration:none;
+      border-radius:10px;
+      font-weight:600;
+      display:inline-block;
+    }
+
+    section{
+      padding:6rem 10%;
+    }
+
+    h2{
+      font-size:2rem;
+      margin-bottom:2rem;
+    }
+
+    .card{
+      background:white;
+      padding:2rem;
+      border-radius:14px;
+      box-shadow:var(--shadow);
+    }
+
+    /* GRID */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:1.5rem;
+    }
+
+    .card h3{
+      color:var(--red);
+      margin-bottom:0.5rem;
+    }
+
+    /* DARK */
+    .dark{
+      background:var(--dark);
+      color:white;
+    }
+
+    .dark h2{
+      color:var(--accent);
+    }
+
+    /* VEHICLES */
+    .vehicle{
+      display:flex;
+      flex-direction:column;
+      gap:0.5rem;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:0.2rem 0.6rem;
+      background:var(--red);
+      color:white;
+      font-size:0.75rem;
+      border-radius:6px;
+      width:max-content;
+    }
+
+    /* MAP */
+    .map{
+      width:100%;
+      height:420px;
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      margin-top:1.5rem;
+    }
+
+    iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    /* GALLERY */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:1rem;
+    }
+
+    .gallery img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      border-radius:12px;
+      cursor:pointer;
+      transition:transform .2s ease;
+    }
+
+    .gallery img:hover{
+      transform:scale(1.03);
+    }
+
+    /* LIGHTBOX */
+    .lightbox{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.9);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+    }
+
+    .lightbox img{
+      max-width:90%;
+      max-height:90%;
+      border-radius:10px;
+    }
+
+    .close{
+      position:absolute;
+      top:20px;
+      right:30px;
+      font-size:2rem;
+      color:white;
+      cursor:pointer;
+    }
+
+    .vehicle-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+
+    gap:2rem;
+
+    margin-top:2rem;
+
+}
+
+.vehicle-card {
+    background: white;
+    color: #222;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+
+.vehicle-card img{
+
+    width:100%;
+
+    height:260px;
+
+    object-fit:cover;
+
+    cursor:pointer;
+
+}
+
+.vehicle-content{
+
+    padding:1.8rem;
+
+}
+
+.vehicle-content h3{
+
+    color:var(--red);
+
+    margin:1rem 0;
+
+}
+
+.vehicle-content ul{
+
+    margin-top:1rem;
+
+    padding-left:20px;
+
+}
+
+.vehicle-content li{
+
+    margin-bottom:8px;
+
+}
+
+.vehicle-card p,
+.vehicle-card li {
+    color: #444;
+}
+
+
+    footer{
+      background:var(--dark);
+      color:white;
+      text-align:center;
+      padding:3rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="brand">
+    Freiwillige Feuerwehr Katensen
+  </div>
+
+  <div>
+
+  </div>
+</div>
+
+<!-- HERO -->
+<header>
+  <img class="wappen" src="img/signet.jpg" alt="Wappen Feuerwehr">
+  <h1>Freiwillige Feuerwehr Katensen</h1>
+  <p>Retten – Löschen – Bergen – Schützen </p>
+  <a class="cta" href="#">Wir sind bald wieder online!</a>
+</header>
+
+
+
+</body>
+</html>
